@@ -11,28 +11,17 @@ function App() {
 
   return (
     <>
-      <div>
       <BrowserRouter>
-        <NavBar />
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/predict">
-            <Predict />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-        </Switch>
+        <div>
+          <NavBar />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/about" exact component={About} />
+            <Route path="/predict" exact component={Predict} />
+            <Route path="/login" exact component={Login} />
+          </Switch>
+        </div>
       </BrowserRouter>
-      </div>
-      <div>
-
-      </div>
     </>
   )
 }

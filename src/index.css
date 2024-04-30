@@ -17,18 +17,15 @@
 a {
   font-weight: 500;
   color: #dfdfdf;
-  text-decoration: inherit;
+  text-decoration: none;
 }
 a:hover {
-  color: #dfdfdf;
+  color: #ffffff;
 }
 
-body {
+html, body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
 }
 
 h1 {
@@ -37,6 +34,8 @@ h1 {
 }
 
 div {
+  margin: 0;
+  padding: 0;
   width: 100%;
 }
 
@@ -52,22 +51,40 @@ nav {
   width: 100%;
 }
 
-.left-login {
-  margin-right: auto;
-}
-
 li a {
   padding: 8px;
   background-color: #0e0e0e;
   float: left;
 }
 
+.about {
+  padding-top: 24px;
+}
+
+.predict {
+  margin-right: auto;
+  padding-top: 24px;
+}
+
 .login {
   float: right;
+  padding-top: 24px;
 }
 
 .home-predict {
   width: 100%;
+}
+
+.glow {
+  padding: 0;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.glow:hover {
+  filter: drop-shadow(0 0 2em #ffffffaa);
+}
+.glow.react:hover {
+  filter: drop-shadow(0 0 2em #ffffffaa);
 }
 
 button {
@@ -82,7 +99,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #ffffff;
 }
 button:focus,
 button:focus-visible {
