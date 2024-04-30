@@ -1,3 +1,5 @@
+import { AwayDropDown, HomeDropDown } from "../Dropdown";
+
 export function Home() {
     return (
        <div>
@@ -5,9 +7,10 @@ export function Home() {
                 <h1>Welcome to Momentum</h1>
             </div>
             <div className="home-predict">
-                <p>Select the away team...</p>
+                {/* <AwayDropDown /> */}
                 <h1>@</h1>
-                <p>Select the home team...</p>
+                {/* <HomeDropDown /> */}
+                <br/>
                 <button>Predict</button>
             </div>
         </div> 

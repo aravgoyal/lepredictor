@@ -1,44 +1,71 @@
-import { DropDownList } from "@progress/kendo-react-dropdowns";
+import { Dropdown } from "react-native-element-dropdown";
+import { useState } from "react";
 
-const teams = ['Atlanta Hawks', 
-    'Boston Celtics', 
-    'Brooklyn Nets',
-    'Charlotte Hornets',
-    'Chicago Bulls', 
-    'Cleveland Cavaliers', 
-    'Dallas Mavericks', 
-    'Denver Nuggets', 
-    'Detroit Pistons', 
-    'Golden State Warriors', 
-    'Houston Rockets', 
-    'Indiana Pacers', 
-    'Los Angeles Clippers', 
-    'Los Angeles Lakers', 
-    'Memphis Grizzlies', 
-    'Miami Heat', 
-    'Milwaukee Bucks', 
-    'Minnesota Timberwolves', 
-    'New Orleans Pelicans',
-    'New York Knicks', 
-    'Oklahoma City Thunder', 
-    'Orlando Magic', 
-    'Philadelphia 76ers', 
-    'Phoenix Suns', 
-    'Portland Trail Blazers', 
-    'Sacramento Kings',
-    'San Antonio Spurs', 
-    'Toronto Raptors', 
-    'Utah Jazz ',
-    'Washington Wizards'];
+const teams = [ /* chatgpt did this, double check*/
+    { name: 'Atlanta Hawks', id: 1610612737 },
+    { name: 'Boston Celtics', id: 1610612738 },
+    { name: 'Brooklyn Nets', id: 1610612751 },
+    { name: 'Charlotte Hornets', id: 1610612766 },
+    { name: 'Chicago Bulls', id: 1610612741 },
+    { name: 'Cleveland Cavaliers', id: 1610612739 },
+    { name: 'Dallas Mavericks', id: 1610612742 },
+    { name: 'Denver Nuggets', id: 1610612743 },
+    { name: 'Detroit Pistons', id: 1610612765 },
+    { name: 'Golden State Warriors', id: 1610612744 },
+    { name: 'Houston Rockets', id: 1610612745 },
+    { name: 'Indiana Pacers', id: 1610612754 },
+    { name: 'Los Angeles Clippers', id: 1610612746 },
+    { name: 'Los Angeles Lakers', id: 1610612747 },
+    { name: 'Memphis Grizzlies', id: 1610612763 },
+    { name: 'Miami Heat', id: 1610612748 },
+    { name: 'Milwaukee Bucks', id: 1610612749 },
+    { name: 'Minnesota Timberwolves', id: 1610612750 },
+    { name: 'New Orleans Pelicans', id: 1610612740 },
+    { name: 'New York Knicks', id: 1610612752 },
+    { name: 'Oklahoma City Thunder', id: 1610612760 },
+    { name: 'Orlando Magic', id: 1610612753 },
+    { name: 'Philadelphia 76ers', id: 1610612755 },
+    { name: 'Phoenix Suns', id: 1610612756 },
+    { name: 'Portland Trail Blazers', id: 1610612757 },
+    { name: 'Sacramento Kings', id: 1610612758 },
+    { name: 'San Antonio Spurs', id: 1610612759 },
+    { name: 'Toronto Raptors', id: 1610612761 },
+    { name: 'Utah Jazz ', id: 1610612762 },
+    { name: 'Washington Wizards', id: 1610612764 } 
+];
 
-export function DropDown() {
+export function AwayDropDown() {
+    const [value, setValue] = useState<string | null>(null);
+
     return (
-        <DropDownList
-            style={{
-                width: "300px",
-            }}
-            data={teams}
-            defaultValue="Select the away team..."
-            />
+            <Dropdown
+                data={teams}
+                placeholder="Select the away team..."
+                searchPlaceholder="Search..."
+                labelField="name"
+                valueField="id"
+                value={value}
+                onChange={item => {
+                    setValue(item.name);
+                }}
+                />
+    );
+}
+
+export function HomeDropDown() {
+    const [value, setValue] = useState<string | null>(null);
+
+    return (
+            <Dropdown
+                data={teams}
+                placeholder="Select the home team..."
+                searchPlaceholder="Search..."
+                labelField="name"
+                valueField="id"
+                value={value}
+                onChange={item => {
+                    setValue(item.name);
+                }}
+                />
     );
 }
