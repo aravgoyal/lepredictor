@@ -16,8 +16,9 @@
 
 a {
   font-weight: 500;
-  color: #dfdfdf;
+  color: #b3b3b3;
   text-decoration: none;
+  transition: all linear 0.15s;
 }
 a:hover {
   color: #ffffff;
