@@ -1,5 +1,4 @@
-import { Dropdown } from "react-native-element-dropdown";
-import { useState } from "react";
+import Dropdown from "react-dropdown";
 
 const teams = [ /* chatgpt did this, double check*/
     { name: 'Atlanta Hawks', id: 1610612737 },
@@ -31,41 +30,19 @@ const teams = [ /* chatgpt did this, double check*/
     { name: 'San Antonio Spurs', id: 1610612759 },
     { name: 'Toronto Raptors', id: 1610612761 },
     { name: 'Utah Jazz ', id: 1610612762 },
-    { name: 'Washington Wizards', id: 1610612764 } 
+    { name: 'Washington Wizards', id: 1610612764 }
 ];
 
-export function AwayDropDown() {
-    const [value, setValue] = useState<string | null>(null);
+const names = teams.map(team => team.name);
 
+export function AwayDropDown() {
     return (
-            <Dropdown
-                data={teams}
-                placeholder="Select the away team..."
-                searchPlaceholder="Search..."
-                labelField="name"
-                valueField="id"
-                value={value}
-                onChange={item => {
-                    setValue(item.name);
-                }}
-                />
+        <Dropdown className="dropdown" options={names} placeholder={"Select the away team..."}/>
     );
 }
 
 export function HomeDropDown() {
-    const [value, setValue] = useState<string | null>(null);
-
     return (
-            <Dropdown
-                data={teams}
-                placeholder="Select the home team..."
-                searchPlaceholder="Search..."
-                labelField="name"
-                valueField="id"
-                value={value}
-                onChange={item => {
-                    setValue(item.name);
-                }}
-                />
+        <Dropdown className="dropdown" options={names} placeholder={"Select the home team..."}/>
     );
 }

@@ -31,6 +31,7 @@ html, body {
 h1 {
   font-size: 3.2em;
   font-style: italic;
+  padding: 0;
 }
 
 div {
@@ -78,7 +79,7 @@ li a {
 .glow {
   padding: 0;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter 500ms;
 }
 .glow:hover {
   filter: drop-shadow(0 0 2em #ffffffaa);
@@ -86,6 +87,40 @@ li a {
 .glow.react:hover {
   filter: drop-shadow(0 0 2em #ffffffaa);
 }
+
+.home-predict {
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.at {
+  padding-top: 64px;
+}
+
+.dropdown {
+  margin: auto;
+  text-align: center;
+  width: 30%;
+  transition: all linear 0.3s;
+  border: 1px solid;
+  border-color: #292929;
+  background-color: #0e0e0e;
+  border-radius: 8px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 8px;
+}
+
+.dropdown:hover {
+  cursor: pointer;
+  color: #fff;
+  border-color: #c0c0c0;
+} 
 
 button {
   border-radius: 8px;
@@ -96,10 +131,11 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all linear 0.3s;
 }
 button:hover {
   border-color: #ffffff;
+  background: rgb(54, 54, 54);
 }
 button:focus,
 button:focus-visible {
