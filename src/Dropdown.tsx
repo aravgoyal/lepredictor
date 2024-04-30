@@ -37,12 +37,12 @@ const names = teams.map(team => team.name);
 
 export function AwayDropDown() {
     return (
-        <Dropdown className="dropdown" options={names} placeholder={"Select the away team..."}/>
+        <Dropdown className="top-dropdown" options={names} placeholder={"Select the away team..."}/>
     );
 }
 
 export function HomeDropDown() {
     return (
-        <Dropdown className="dropdown" options={names} placeholder={"Select the home team..."}/>
+        <Dropdown className="bottom-dropdown" options={names} placeholder={"Select the home team..."}/>
     );
 }
