@@ -116,6 +116,7 @@ li a {
   text-align: center;
   padding: 8px;
   z-index: 9;
+  font-size: 20px;
 }
 
 .top-dropdown:hover {
@@ -140,6 +141,7 @@ li a {
   right: 0;
   text-align: center;
   padding: 8px;
+  font-size: 20px;
 }
 
 .bottom-dropdown:hover {
@@ -147,6 +149,10 @@ li a {
   color: #fff;
   border-color: #c0c0c0;
 } 
+
+.predict-button {
+  margin-top: 64px;
+}
 
 button {
   border-radius: 8px;
