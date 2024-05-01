@@ -1,4 +1,3 @@
-import { AwayDropDown, HomeDropDown } from "../Dropdown";
 import { DropdownMenu } from "../Dropdown";
 
 export function Predict() {
