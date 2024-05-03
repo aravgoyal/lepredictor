@@ -13,6 +13,7 @@ export function NavBar() {
       </div>
       <div>
         <li><a className="login"><NavLink to="/login">Login</NavLink></a></li>
+        <li><a className="register"><NavLink to="/register">Sign Up</NavLink></a></li>
       </div>
     </nav>
   );
