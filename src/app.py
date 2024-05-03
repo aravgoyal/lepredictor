@@ -4,6 +4,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_score
 from sklearn.metrics import accuracy_score
 from sklearn.naive_bayes import GaussianNB
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
 
 cavs = 1610612739
 clippers = 1610612746
@@ -78,7 +81,7 @@ def get_dfs(team_id):
     for i in seasons:
         new_gf = leaguegamefinder.LeagueGameFinder(team_id_nullable=team_id, season_nullable=i)
         new_games = new_gf.get_data_frames()[0]
-        all_team_games = all_team_games.append(new_games)
+        all_team_games = pd.concat([all_team_games, new_games], ignore_index=True)
 
     all_team_games.index = range(0, all_team_games.shape[0])
     game_ids = []
@@ -160,8 +163,8 @@ all_home, all_away = df_with_target(cavs)
     
 for team in no_cavs:
     df_home, df_away = df_with_target(team)
-    all_home = all_home.append(df_home)
-    all_away = all_away.append(df_away)
+    all_home = pd.concat([all_home, df_home], ignore_index=True)
+    all_away = pd.concat([all_away, df_away], ignore_index=True)
     
 all_home.index = range(0,all_home.shape[0])
 all_away.index = range(0,all_away.shape[0])
@@ -184,7 +187,13 @@ combined_away = pd.DataFrame(dict(actual=away_test["W"], predicted=preds), index
 accuracy_away = accuracy_score(away_test["W"], preds)
 precision_away = precision_score(away_test["W"], preds)
 
-def predictor(away_id, home_id):
+@app.route('/predict/<teams>')
+def predictor(teams):
+    data {
+        "teams": ["1610612737", "1610612738"]
+    }
+    home_id = teams[1]
+    away_id = teams[0]
     df_home, df_away1 = df_with_target(home_id)
     df_home1, df_away = df_with_target(away_id)
     
@@ -200,6 +209,9 @@ def predictor(away_id, home_id):
     df_predict['W'] = model_away.predict(new_stats)
     
     if df_predict['W'].iloc[0] == 1:
-        return away_id
+        return str(away_id)
     else: 
-        return home_id
+        return str(home_id)
+    
+if __name__ == "__main__":
+    app.run(debug=True)
