@@ -5,8 +5,10 @@ from sklearn.metrics import precision_score
 from sklearn.metrics import accuracy_score
 from sklearn.naive_bayes import GaussianNB
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 cavs = 1610612739
 clippers = 1610612746
@@ -187,16 +189,21 @@ combined_away = pd.DataFrame(dict(actual=away_test["W"], predicted=preds), index
 accuracy_away = accuracy_score(away_test["W"], preds)
 precision_away = precision_score(away_test["W"], preds)
 
-@app.route('/predict/<teams>')
-def predictor(teams):
-    data {
-        "teams": ["1610612737", "1610612738"]
-    }
-    home_id = teams[1]
-    away_id = teams[0]
+@app.route('/api/predict', methods=["GET", "POST"])
+def predict():
+    if request.method == 'POST':
+        data = request.get_json()
+    else:
+        data = {
+            'home': '1610612737',
+            'away': '1610612738'
+        }
+    home_id = int(data['home'])
+    away_id = int(data['away'])
     df_home, df_away1 = df_with_target(home_id)
     df_home1, df_away = df_with_target(away_id)
     
+    print(len(df_home))
     home_stats = list(df_home.loc[:, 'PTS_HOME_rolling':'PLUS_MINUS_HOME_rolling'].iloc[-1])
     home_pm = df_home['PLUS_MINUS_HOME'].iloc[-1]
     home_stats.append(home_pm)
@@ -209,9 +216,11 @@ def predictor(teams):
     df_predict['W'] = model_away.predict(new_stats)
     
     if df_predict['W'].iloc[0] == 1:
-        return str(away_id)
+        winner = str(away_id)
     else: 
-        return str(home_id)
+        winner = str(home_id)
+
+    return jsonify({"winnerID": winner}), 201
     
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,5 +1,3 @@
-import Dropdown from "react-dropdown";
-
 const teams = [ /* chatgpt did this, double check*/
     { name: 'Atlanta Hawks', id: '1610612737' },
     { name: 'Boston Celtics', id: '1610612738' },
@@ -33,26 +31,14 @@ const teams = [ /* chatgpt did this, double check*/
     { name: 'Washington Wizards', id: '1610612764' }
 ];
 
-const names = teams.map(team => team.name);
-
-export function AwayDropDown() {
-    return (
-        <Dropdown className="top-dropdown" options={names} placeholder={"Select the away team..."}/>
-    );
-}
-
-export function HomeDropDown() {
-    return (
-        <Dropdown className="bottom-dropdown" options={names} placeholder={"Select the home team..."}/>
-    );
-}
-
 import React, { useState } from 'react';
+import axios from 'axios';
 
 export function DropdownMenu() {
     const [away, setAway] = useState('');
     const [home, setHome] = useState('');
     const [winner, setWinner] = useState('');
+    const [loading, setLoading] = useState('');
 
     const handleSelectAway = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setAway(e.target.value);
@@ -63,9 +49,18 @@ export function DropdownMenu() {
     };
 
     const handleSelectWinner = () => {
-        const randomWinnerId = Math.random() < 0.5 ? away : home;
-        const winnerTeam = teams.find(team => team.id === randomWinnerId);
-        setWinner(winnerTeam ? winnerTeam.name : '');
+        setWinner('');
+        setLoading('Loading...');
+        axios.post('http://127.0.0.1:5000/api/predict', { away, home })
+            .then(response => {
+                const { winnerID } = response.data;
+                const winner = teams.find(team => team.id === winnerID);
+                setLoading('');
+                setWinner(winner ? winner.name : '');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     };
 
     return (
@@ -86,6 +81,7 @@ export function DropdownMenu() {
                 </select>
             </div>
             <button className='predict-button' onClick={handleSelectWinner}>Predict</button>
+            {loading && <h2>{loading}</h2>}
             {winner && <h2>The {winner} will win.</h2>}
         </div>
     );
