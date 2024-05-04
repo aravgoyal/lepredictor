@@ -4,7 +4,8 @@ import { NavBar } from "./NavBar";
 import { Home } from "./pages/Home"
 import { About } from "./pages/About"
 import { Predict } from "./pages/Predict"
-import { Login } from "./pages/Login"
+import LoginPage from './pages/Loginpage/LoginPage';
+import RegisterPage from './pages/Registerpage/RegisterPage';
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/predict" element={<Predict />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
         </div>
       </BrowserRouter>
