@@ -161,6 +161,28 @@ li a {
   margin-top: 64px;
 }
 
+.loading {
+  font-size: 32px;
+  color: #b3b3b3;
+  text-decoration: none;
+  animation: fade linear infinite 2s;
+}
+
+.winner {
+  font-size: 32px;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;

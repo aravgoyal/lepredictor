@@ -81,8 +81,8 @@ export function DropdownMenu() {
                 </select>
             </div>
             <button className='predict-button' onClick={handleSelectWinner}>Predict</button>
-            {loading && <h2>{loading}</h2>}
-            {winner && <h2>The {winner} will win.</h2>}
+            {loading && <h3 className='loading'>{loading}</h3>}
+            {winner && <h2 className='winner'>The {winner} will win.</h2>}
         </div>
     );
 }
