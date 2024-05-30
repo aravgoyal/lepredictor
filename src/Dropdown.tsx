@@ -38,6 +38,7 @@ export function DropdownMenu() {
     const [away, setAway] = useState('');
     const [home, setHome] = useState('');
     const [winner, setWinner] = useState('');
+    const [winProb, setWinProb] = useState('');
     const [loading, setLoading] = useState('');
 
     const handleSelectAway = (e: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -50,13 +51,23 @@ export function DropdownMenu() {
 
     const handleSelectWinner = () => {
         setWinner('');
+        setWinProb('');
         setLoading('Loading...');
+        console.log('Request sent.');
         axios.post('http://127.0.0.1:5000/api/predict', { away, home })
             .then(response => {
-                const { winnerID } = response.data;
+                
+                const winnerID = response.data['id'];
+                console.log('Winner ID: ' + winnerID);
+
+                const probability = response.data['prob'];
+                console.log('Win Probability: ' + probability);
+
                 const winner = teams.find(team => team.id === winnerID);
+
+                setWinner(winner ? winner.name : 'Error');
+                setWinProb(probability);
                 setLoading('');
-                setWinner(winner ? winner.name : '');
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -82,7 +93,7 @@ export function DropdownMenu() {
             </div>
             <button className='predict-button' onClick={handleSelectWinner}>Predict</button>
             {loading && <h3 className='loading'>{loading}</h3>}
-            {winner && <h2 className='winner'>The {winner} will win.</h2>}
+            {winner && winProb && <h2 className='winner'>There is a {winProb} chance the {winner} will win.</h2>}
         </div>
     );
 }

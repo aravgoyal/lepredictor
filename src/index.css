@@ -84,6 +84,29 @@ li a {
   width: 100%;
 }
 
+.fade {
+  animation: fadeIn 1.5s;
+}
+
+.fade-delay {
+  animation: fadeIn 1.5s 1s forwards;
+  opacity: 0;
+}
+
+.about-desc {
+  animation: fadeIn 1.5s 1s forwards;
+  opacity: 0;
+  width: 800px;
+  padding-left: auto;
+  padding-right: auto;
+  position: absolute;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .glow {
   padding: 0;
   will-change: filter;
@@ -108,7 +131,6 @@ li a {
 
 .top-dropdown {
   margin: auto;
-  text-align: center;
   width: 30%;
   transition: all linear 0.3s;
   border: 1px solid;
@@ -166,6 +188,11 @@ li a {
   color: #b3b3b3;
   text-decoration: none;
   animation: fade linear infinite 2s;
+}
+
+.predict-instr {
+  color: #b3b3b3;
+  font-size: 18px;
 }
 
 .winner {

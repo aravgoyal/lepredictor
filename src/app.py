@@ -213,14 +213,18 @@ def predict():
     new_stats = [away_stats+home_stats]
         
     df_predict = pd.DataFrame(new_stats, columns=pred_cols)
+    df_predict['Probability'] = model_away.predict_proba(new_stats)[0][0]
     df_predict['W'] = model_away.predict(new_stats)
     
     if df_predict['W'].iloc[0] == 1:
-        winner = str(away_id)
+        winnerID = str(away_id)
+        winProb = str(((1 - df_predict['Probability'].iloc[0]) * 100).round(1)) + '%'
     else: 
-        winner = str(home_id)
+        winnerID = str(home_id)
+        winProb = str((df_predict['Probability'].iloc[0] * 100).round(1)) + '%'
 
-    return jsonify({"winnerID": winner}), 201
+    winner = {'id': winnerID, 'prob': winProb}
+    return jsonify(winner), 201
     
 if __name__ == "__main__":
     app.run(debug=True)
