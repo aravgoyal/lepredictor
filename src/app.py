@@ -93,8 +93,13 @@ def get_dfs(team_id):
     rows = []
     for id in game_ids:
         get_games = all_games[all_games.GAME_ID == id]
-        new_row = combine_team_games(get_games).iloc[0]
-        rows.append(new_row)
+        combined = combine_team_games(get_games)
+        if combined.empty:
+            new_row = []
+        else: 
+            new_row = combined.iloc[0]
+        if len(new_row) > 0:
+            rows.append(new_row)
     df = pd.DataFrame(rows)
     df_away = df[df['TEAM_ID_AWAY'].isin([team_id])]
     df_home = df[df['TEAM_ID_HOME'].isin([team_id])]
