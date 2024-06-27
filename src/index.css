@@ -36,6 +36,12 @@ h1 {
   padding: 0;
 }
 
+h2 {
+  font-size: 1.65em;
+  font-style: italic;
+  padding: 0;
+}
+
 div {
   margin: 0;
   padding: 0;
@@ -69,10 +75,19 @@ li a {
   padding-top: 24px;
 }
 
-.login {
+.logout {
   float: right;
   padding-top: 24px;
   padding-right: 24px;
+}
+
+.is-visible {
+  opacity: 1;
+}
+
+.login-container {
+  margin-top: 10%;
+  width: 100%;
 }
 
 .register {
@@ -83,8 +98,8 @@ li a {
 
 .home-content {
   width: 100%;
-  float: left;
-  padding-top: 10%;
+  margin-top: 70vh;
+  padding: 20px;
 }
 
 .fade {
@@ -240,6 +255,153 @@ li a {
   animation: fade linear infinite 2s;
 }
 
+.login {
+  margin-top: 5%;
+}
+
+.login-email {
+  width: 30%;
+  transition: all linear 0.3s;
+  border: 1px solid;
+  border-color: #292929;
+  background-color: #0e0e0e;
+  border-radius: 8px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: left;
+  padding: 6px;
+  font-size: 20px;
+}
+
+.login-password {
+  width: 30%;
+  transition: all linear 0.3s;
+  border: 1px solid;
+  border-color: #292929;
+  background-color: #0e0e0e;
+  border-radius: 8px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: left;
+  padding: 6px;
+  margin-top: 64px;
+  font-size: 20px;
+}
+
+.register-button {
+  animation: none;
+  opacity: 1;
+  margin: auto;
+  margin-top: 12%;
+  position: relative;
+}
+
+.login-account {
+  margin-top: 2%;
+}
+
+.register-password {
+  width: 30%;
+  transition: all linear 0.3s;
+  border: 1px solid;
+  border-color: #292929;
+  background-color: #0e0e0e;
+  border-radius: 8px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: left;
+  padding: 6px;
+  margin-top: 48px;
+  font-size: 20px;
+}
+
+.register-confirm {
+  width: 30%;
+  transition: all linear 0.3s;
+  border: 1px solid;
+  border-color: #292929;
+  background-color: #0e0e0e;
+  border-radius: 8px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: left;
+  padding: 6px;
+  margin-top: 96px;
+  font-size: 20px;
+}
+
+.register-email {
+  width: 30%;
+  transition: all linear 0.3s;
+  border: 1px solid;
+  border-color: #292929;
+  background-color: #0e0e0e;
+  border-radius: 8px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: left;
+  padding: 6px;
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+.register-email:hover {
+  cursor: pointer;
+  color: #fff;
+  border-color: #c0c0c0;
+}
+
+.register-password:hover {
+  cursor: pointer;
+  color: #fff;
+  border-color: #c0c0c0;
+}
+
+.register-confirm:hover {
+  cursor: pointer;
+  color: #fff;
+  border-color: #c0c0c0;
+}
+
+.login-email:hover {
+  cursor: pointer;
+  color: #fff;
+  border-color: #c0c0c0;
+} 
+
+.login-password:hover {
+  cursor: pointer;
+  color: #fff;
+  border-color: #c0c0c0;
+}
+
+.login-button {
+  animation: none;
+  opacity: 1;
+  margin: auto;
+  margin-top: 10%;
+  position: relative;
+}
+
+.register-account {
+  margin-top: 2%;
+}
+
 .predict-instr {
   color: #969696;
   font-size: 18px;
@@ -273,10 +435,12 @@ button {
   cursor: pointer;
   transition: all linear 0.3s;
 }
+
 button:hover {
   border-color: #ffffff;
   background: rgb(54, 54, 54);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

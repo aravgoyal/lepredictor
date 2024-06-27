@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { login } from './authFeatures';
+import { login, reset } from './authFeatures';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -14,13 +14,23 @@ export const Login: React.FC = () => {
     }
   };
 
+  const handleReset = () => {
+    reset(email);
+  }
+
   return (
-    <div>
-      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-      <button onClick={handleLogin}>Login</button>
-      <a>Don't have an account? </a>
-      <a href='/register'>Register</a>
+    <div className="login-container">
+      <h1>Momentum</h1>
+      <input className='login-email' type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+      <input className='login-password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+      <button className='login-button' onClick={handleLogin}>Login</button>
+      <div className='register-account'>
+        <a href="/" onClick={handleReset}>Forgot Password?</a>
+        <br />
+        <br />
+        <a>Don't have an account? </a>
+        <a href='/register'>Register</a>
+      </div>
       {message && <h3>{message}</h3>}
     </div>
   );

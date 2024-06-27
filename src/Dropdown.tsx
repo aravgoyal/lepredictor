@@ -88,7 +88,7 @@ export function DropdownMenu() {
                         <option key={team.id} value={team.id}>{team.name}</option>
                     ))}
                 </select>
-                <h1 className="at">@</h1>
+                <h2 className="at">@</h2>
                 <select className="bottom-dropdown" onChange={handleSelectHome}>
                     <option value="">Select the home team...</option>
                     {teams.map(team => (

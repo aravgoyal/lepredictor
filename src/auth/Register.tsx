@@ -16,14 +16,17 @@ export const Register: React.FC = () => {
       };
 
     return (
-    <div>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-        <input type="password" value={confirm} onChange={(e) => setConfirm(e.target.value)} placeholder="Confirm Password" />
-        <button onClick={handleRegister}>Register</button>
-        <a>Already have an account? </a>
-        <a href='/'>Login</a>
+        <div className="login-container">
+        <h1>Register</h1>
+        <input className='register-email' type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+        <input className='register-password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+        <input className="register-confirm" type="password" value={confirm} onChange={(e) => setConfirm(e.target.value)} placeholder="Confirm Password" />
+        <button className='register-button' onClick={handleRegister}>Register</button>
+        <div className='login-account'>
+          <a>Already have an account? </a>
+          <a href='/'>Login</a>
+        </div>
         {message && <h3>{message}</h3>}
-    </div>
+      </div>
     );
 }

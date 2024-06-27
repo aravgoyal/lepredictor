@@ -1,5 +1,17 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from './authConfig';
+
+// Reset password
+const reset = async (email: string) => {
+  await sendPasswordResetEmail(auth, email).then(() => {
+    
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.error(errorMessage + " " + errorCode);
+  })
+}
 
 // Register a new user
 const register = async (email: string, password: string, confirm: string) => {
@@ -35,4 +47,4 @@ const logout = async () => {
   }
 };
 
-export { register, login, logout };
+export { register, login, logout, reset };

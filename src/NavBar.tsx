@@ -11,7 +11,7 @@ export function NavBar() {
       <div>
         <li><a><NavLink to="/home"><img src={logo} alt="Logo" /></NavLink></a></li>
         <li><a className="predict"><NavLink to="/predict">Predict</NavLink></a></li>
-        <li><a onClick={logout} className="login"><NavLink to="/">Log out</NavLink></a></li>
+        <li><a onClick={logout} className="logout"><NavLink to="/">Log out</NavLink></a></li>
       </div>
     </nav>
   );

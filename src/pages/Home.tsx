@@ -11,7 +11,7 @@ export function Home() {
       const options = {
         root: null,
         rootMargin: "0px",
-        threshold: 0.5, // Adjust as needed
+        threshold: 0.5,
       };
   
       const observer = new IntersectionObserver((entries, observer) => {
@@ -59,7 +59,7 @@ export function Home() {
           </div>
         </div>
         <div className="home-content">
-          <div ref={aboutRef}>
+          <div ref={aboutRef} className={`fade ${isVisible ? "is-visible" : ""}`}>
             {isVisible && <About />}
           </div>
         </div>
