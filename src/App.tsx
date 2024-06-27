@@ -1,11 +1,9 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { NavBar } from "./NavBar";
 import { Home } from "./pages/Home"
 import { Predict } from "./pages/Predict"
-import { AuthComponent } from "./auth/Login";
-
-
+import { Login } from "./auth/Login";
+import { Register } from "./auth/Register";
 
 function App() {
 
@@ -13,11 +11,11 @@ function App() {
     <>
       <BrowserRouter>
         <div>
-        <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Login />} />
           <Route path="/predict" element={<Predict />} />
-          <Route path="/login" element={<AuthComponent />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/register" element={<Register />}/>
         </Routes>
         </div>
       </BrowserRouter>

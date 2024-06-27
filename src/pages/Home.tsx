@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { About } from "./About";
 import { useEffect, useRef, useState } from "react";
+import { NavBar } from "../NavBar";
 
 export function Home() {
     const aboutRef = useRef<HTMLDivElement>(null);
@@ -36,6 +37,7 @@ export function Home() {
   
     return (
       <div>
+        <NavBar />
         <br />
         <br />
         <div className="container">
@@ -53,7 +55,7 @@ export function Home() {
             </div>
           </div>
           <div className="home-right">
-            <img src="src\assets\silhouette.png" width="60%" height="60%" />
+            <img className="glow" src="src\assets\silhouette.png" width="60%" height="60%" />
           </div>
         </div>
         <div className="home-content">

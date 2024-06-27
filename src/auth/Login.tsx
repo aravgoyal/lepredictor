@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
-import { register, login, logout } from './authFeatures';
+import { login } from './authFeatures';
 
-export const AuthComponent: React.FC = () => {
+export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleRegister = () => {
-    register(email, password);
-  };
+  const [message, setMessage] = useState('');
 
   const handleLogin = () => {
-    login(email, password);
-  };
-
-  const handleLogout = () => {
-    logout();
+    try {
+      login(email, password);
+    } catch (error) {
+      setMessage("Error logging in: " + error);
+    }
   };
 
   return (
     <div>
       <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
       <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-      <button onClick={handleRegister}>Register</button>
       <button onClick={handleLogin}>Login</button>
-      <button onClick={handleLogout}>Logout</button>
+      <a>Don't have an account? </a>
+      <a href='/register'>Register</a>
+      {message && <h3>{message}</h3>}
     </div>
   );
 };

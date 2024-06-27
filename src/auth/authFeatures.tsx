@@ -2,10 +2,13 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } f
 import { auth } from './authConfig';
 
 // Register a new user
-const register = async (email: string, password: string) => {
+const register = async (email: string, password: string, confirm: string) => {
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    console.log('User registered:', userCredential.user);
+    if (password == confirm) {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      console.log('User registered:', userCredential.user);
+      window.location.href = "/";
+    }
   } catch (error) {
     console.error('Error registering user:', error);
   }
@@ -16,6 +19,7 @@ const login = async (email: string, password: string) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     console.log('User logged in:', userCredential.user);
+    window.location.href = "/home";
   } catch (error) {
     console.error('Error logging in:', error);
   }
