@@ -53,6 +53,11 @@ export function DropdownMenu() {
         setWinner('');
         setWinProb('');
         setLoading('Loading...');
+        if (away.length == 0) {
+            setLoading("Select an away team!");
+        } else if (home.length == 0) {
+            setLoading("Select a home team!")
+        }
         console.log('Request sent.');
         axios.post('http://127.0.0.1:5000/api/predict', { away, home })
             .then(response => {

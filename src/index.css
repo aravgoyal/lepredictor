@@ -80,8 +80,10 @@ li a {
   padding-right: 24px;
 }
 
-.home-predict {
+.home-content {
   width: 100%;
+  float: left;
+  padding-top: 10%;
 }
 
 .fade {
@@ -96,15 +98,62 @@ li a {
 .about-desc {
   animation: fadeIn 1.5s 1s forwards;
   opacity: 0;
-  width: 800px;
-  padding-left: auto;
-  padding-right: auto;
-  position: absolute;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.home-desc {
+  animation: fadeIn 1.5s 1s forwards;
+  opacity: 0;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.desc {
+  animation: fadeIn 1.5s 1s forwards;
+  opacity: 0;
+  color: #969696;
+  padding-bottom: 2%;
 }
 
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+.home-title {
+  float: left;
+  width: 60%;
+  height: 100%;
+}
+
+.container {
+  padding: 20px;
+}
+
+.home-right {
+  animation: fadeIn 1.5s 2s forwards;
+  opacity: 0;
+  width: 40%;
+  float: right;
+  height: 100%;
+}
+
+.title {
+  font-size: 80px;
+  padding: 0;
+  margin: 0;
+  will-change: filter;
+  transition: filter 500ms;
+}
+
+.title:hover {
+  filter: drop-shadow(0 0 2em #ffffffaa);
+}
+.title.react:hover {
+  filter: drop-shadow(0 0 2em #ffffffaa);
 }
 
 .glow {
@@ -191,7 +240,7 @@ li a {
 }
 
 .predict-instr {
-  color: #b3b3b3;
+  color: #969696;
   font-size: 18px;
 }
 
@@ -211,13 +260,15 @@ li a {
 }
 
 button {
+  animation: fadeIn 1.5s 1.5s forwards;
+  opacity: 0;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid #cccccc;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #111111;
   cursor: pointer;
   transition: all linear 0.3s;
 }

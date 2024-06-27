@@ -75,38 +75,41 @@ def combine_team_games(df, keep_method='home'):
 result = leaguegamefinder.LeagueGameFinder()
 all_games = result.get_data_frames()[0]
 
-def get_dfs(team_id):
-    seasons = ['2022-23', '2021-22', '2020-21', '2019-20']
-    gamefinder = leaguegamefinder.LeagueGameFinder(team_id_nullable=team_id, season_nullable='2023-24')
-    all_team_games = gamefinder.get_data_frames()[0]
-    
-    for i in seasons:
-        new_gf = leaguegamefinder.LeagueGameFinder(team_id_nullable=team_id, season_nullable=i)
-        new_games = new_gf.get_data_frames()[0]
-        all_team_games = pd.concat([all_team_games, new_games], ignore_index=True)
+from concurrent.futures import ThreadPoolExecutor
 
-    all_team_games.index = range(0, all_team_games.shape[0])
-    game_ids = []
-    for i in range(all_team_games.shape[0]):
-        game_ids.append(all_team_games.loc[i]['GAME_ID'])
-        
-    rows = []
-    for id in game_ids:
-        get_games = all_games[all_games.GAME_ID == id]
-        combined = combine_team_games(get_games)
-        if combined.empty:
-            new_row = []
-        else: 
-            new_row = combined.iloc[0]
-        if len(new_row) > 0:
-            rows.append(new_row)
-    df = pd.DataFrame(rows)
-    df_away = df[df['TEAM_ID_AWAY'].isin([team_id])]
-    df_home = df[df['TEAM_ID_HOME'].isin([team_id])]
+api_cache = {}
+
+def get_games_for_season(team_id, season):
+    if (team_id, season) not in api_cache:
+        gamefinder = leaguegamefinder.LeagueGameFinder(team_id_nullable=team_id, season_nullable=season)
+        api_cache[(team_id, season)] = gamefinder.get_data_frames()[0]
+    return api_cache[(team_id, season)]
+
+def get_dfs(team_id):
+    seasons = ['2023-24', '2022-23', '2021-22', '2020-21', '2019-20']
+    
+    # Use ThreadPoolExecutor to fetch data in parallel
+    with ThreadPoolExecutor() as executor:
+        all_team_games = list(executor.map(lambda season: get_games_for_season(team_id, season), seasons))
+    
+    # Concatenate all retrieved DataFrames
+    all_team_games = pd.concat(all_team_games, ignore_index=True)
+    
+    # Extract game IDs and filter all games in one step
+    game_ids = all_team_games['GAME_ID'].unique()
+    filtered_games = all_games[all_games['GAME_ID'].isin(game_ids)]
+    
+    # Combine team games
+    combined_games = filtered_games.groupby('GAME_ID').apply(combine_team_games).reset_index(drop=True)
+    
+    # Filter home and away games for the given team ID
+    df_home = combined_games[combined_games['TEAM_ID_HOME'] == team_id]
+    df_away = combined_games[combined_games['TEAM_ID_AWAY'] == team_id]
+
+    # Sort the DataFrames by game date
     df_home = df_home.sort_values(by='GAME_DATE', ascending=True)
     df_away = df_away.sort_values(by='GAME_DATE', ascending=True)
-    df_away.index = range(0,df_away.shape[0])
-    df_home.index = range(0,df_home.shape[0])
+    
     return df_home, df_away
 
 def rolling_averages(group, cols, new_cols):
@@ -165,18 +168,16 @@ def df_with_target(team_id):
     df_away.index = range(0,df_away.shape[0])
     return df_home, df_away
 
-#combines home games of all teams and away games of all teams
-all_home, all_away = df_with_target(cavs)
-    
-for team in no_cavs:
+all_home_list = []
+all_away_list = []
+
+for team in league_ids:
     df_home, df_away = df_with_target(team)
-    all_home = pd.concat([all_home, df_home], ignore_index=True)
-    all_away = pd.concat([all_away, df_away], ignore_index=True)
-    
-all_home.index = range(0,all_home.shape[0])
-all_away.index = range(0,all_away.shape[0])
-all_home = all_home.dropna()
-all_away = all_away.dropna()
+    all_home_list.append(df_home)
+    all_away_list.append(df_away)
+
+all_home = pd.concat(all_home_list, ignore_index=True)
+all_away = pd.concat(all_away_list, ignore_index=True)
 
 model = GaussianNB()
 
@@ -208,7 +209,6 @@ def predict():
     df_home, df_away1 = df_with_target(home_id)
     df_home1, df_away = df_with_target(away_id)
     
-    print(len(df_home))
     home_stats = list(df_home.loc[:, 'PTS_HOME_rolling':'PLUS_MINUS_HOME_rolling'].iloc[-1])
     home_pm = df_home['PLUS_MINUS_HOME'].iloc[-1]
     home_stats.append(home_pm)
