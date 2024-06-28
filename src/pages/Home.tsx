@@ -38,8 +38,6 @@ export function Home() {
     return (
       <div>
         <NavBar />
-        <br />
-        <br />
         <div className="container">
           <div className="home-title">
             <div className="fade">
