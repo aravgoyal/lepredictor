@@ -299,12 +299,12 @@ li a {
   animation: none;
   opacity: 1;
   margin: auto;
-  margin-top: 12%;
+  margin-top: 160px;
   position: relative;
 }
 
 .login-account {
-  margin-top: 2%;
+  margin-top: 32px;
 }
 
 .register-password {
@@ -395,12 +395,12 @@ li a {
   animation: none;
   opacity: 1;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 128px;
   position: relative;
 }
 
 .register-account {
-  margin-top: 2%;
+  margin-top: 32px;
 }
 
 .predict-instr {
