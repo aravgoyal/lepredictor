@@ -44,9 +44,6 @@ wizards = 1610612764
 league_ids = [cavs, clippers, knicks, celtics, hawks, nets, hornets, bulls, mavericks, nuggets, pistons, warriors, rockets,
              pacers, lakers, grizzlies, heat, bucks, timberwolves, pelicans, thunder, magic, sixers, suns, blazers, kings,
              spurs, raptors, jazz, wizards]
-no_cavs = [clippers, knicks, celtics, hawks, nets, hornets, bulls, mavericks, nuggets, pistons, warriors, rockets,
-          pacers, lakers, grizzlies, heat, bucks, timberwolves, pelicans, thunder, magic, sixers, suns, blazers, kings,
-          spurs, raptors, jazz, wizards]
 
 def combine_team_games(df, keep_method='home'):
     # Join every row to all others with the same game ID.

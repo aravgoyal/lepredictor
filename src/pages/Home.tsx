@@ -49,7 +49,7 @@ export function Home() {
                 Find the results of tonight's games before they happen.
               </h3>
               <button>
-                <NavLink to="/predict">Predict</NavLink>
+                <NavLink to="/nba">Predict</NavLink>
               </button>
             </div>
           </div>
