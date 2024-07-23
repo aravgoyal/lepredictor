@@ -13,4 +13,4 @@ Momentum is a web application that allows users to predict NBA games using facto
 
 ## Web App
 
-Link: https://mntm-592f380e75d8.herokuapp.com/
+Link: https://momentum-nba.vercel.app/
