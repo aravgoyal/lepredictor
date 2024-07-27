@@ -34,7 +34,10 @@ export function NBADropdownMenu() {
                     
                     const winnerID = response.data['id'];
                     console.log('Winner ID: ' + winnerID);
-    
+
+                    if (response.data['prob'] == "100.0%") {
+                        response.data['prob'] = "99.9%"
+                    }
                     const probability = response.data['prob'];
                     console.log('Win Probability: ' + probability);
     
