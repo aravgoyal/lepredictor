@@ -24,7 +24,9 @@ export function NBADropdownMenu() {
         if (away.length == 0) {
             setLoading("Select an away team!");
         } else if (home.length == 0) {
-            setLoading("Select a home team!")
+            setLoading("Select a home team!");
+        } else if (home == away) {
+            setLoading("Select different teams!");
         }
         console.log('Request sent.');
         axios.post('https://aravgoyal.pythonanywhere.com/api/nba', { away, home })
