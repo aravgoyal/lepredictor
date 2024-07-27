@@ -89,7 +89,7 @@ export function NFLDropdownMenu() {
     const handleSelectWinner = () => {
         setWinner('');
         setWinProb('');
-        setLoading('Loading...');
+        setLoading('Coming soon...');
         if (away.length == 0) {
             setLoading("Select an away team!");
         } else if (home.length == 0) {
@@ -158,7 +158,7 @@ export function EPLDropdownMenu() {
     const handleSelectWinner = () => {
         setWinner('');
         setWinProb('');
-        setLoading('Loading...');
+        setLoading('Coming soon...');
         if (away.length == 0) {
             setLoading("Select an away team!");
         } else if (home.length == 0) {
