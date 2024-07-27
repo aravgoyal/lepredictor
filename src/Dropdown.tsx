@@ -27,7 +27,7 @@ export function NBADropdownMenu() {
             setLoading("Select a home team!")
         }
         console.log('Request sent.');
-        axios.post('http://127.0.0.1:5000/api/nba', { away, home })
+        axios.post('https://aravgoyal.pythonanywhere.com/api/nba', { away, home })
             .then(response => {
                 
                 const winnerID = response.data['id'];
