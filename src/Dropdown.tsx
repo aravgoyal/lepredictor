@@ -27,26 +27,27 @@ export function NBADropdownMenu() {
             setLoading("Select a home team!");
         } else if (home == away) {
             setLoading("Select different teams!");
+        } else {
+            console.log('Request sent.');
+            axios.post('https://aravgoyal.pythonanywhere.com/api/nba', { away, home })
+                .then(response => {
+                    
+                    const winnerID = response.data['id'];
+                    console.log('Winner ID: ' + winnerID);
+    
+                    const probability = response.data['prob'];
+                    console.log('Win Probability: ' + probability);
+    
+                    const winner = nbateams.find(team => team.id === winnerID);
+    
+                    setWinner(winner ? winner.name : 'Error');
+                    setWinProb(probability);
+                    setLoading('');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
-        console.log('Request sent.');
-        axios.post('https://aravgoyal.pythonanywhere.com/api/nba', { away, home })
-            .then(response => {
-                
-                const winnerID = response.data['id'];
-                console.log('Winner ID: ' + winnerID);
-
-                const probability = response.data['prob'];
-                console.log('Win Probability: ' + probability);
-
-                const winner = nbateams.find(team => team.id === winnerID);
-
-                setWinner(winner ? winner.name : 'Error');
-                setWinProb(probability);
-                setLoading('');
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
     };
 
     return (
