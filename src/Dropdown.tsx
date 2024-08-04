@@ -99,8 +99,10 @@ export function NFLDropdownMenu() {
         if (away.length == 0) {
             setLoading("Select an away team!");
         } else if (home.length == 0) {
-            setLoading("Select a home team!")
-        }
+            setLoading("Select a home team!");
+        } else if (home == away) {
+            setLoading("Select different teams!");
+        } else {
         console.log('Request sent.');
         axios.post('https://aravgoyal.pythonanywhere.com/api/nfl', { away, home })
             .then(response => {
@@ -120,6 +122,7 @@ export function NFLDropdownMenu() {
             .catch(error => {
                 console.error('Error:', error);
             });
+        }
     };
 
     return (
