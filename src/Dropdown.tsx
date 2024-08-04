@@ -95,14 +95,14 @@ export function NFLDropdownMenu() {
     const handleSelectWinner = () => {
         setWinner('');
         setWinProb('');
-        setLoading('Coming soon...');
+        setLoading('Loading...');
         if (away.length == 0) {
             setLoading("Select an away team!");
         } else if (home.length == 0) {
             setLoading("Select a home team!")
         }
         console.log('Request sent.');
-        axios.post('http://127.0.0.1:5000/api/nfl', { away, home })
+        axios.post('https://aravgoyal.pythonanywhere.com/api/nfl', { away, home })
             .then(response => {
                 
                 const winnerID = response.data['id'];
