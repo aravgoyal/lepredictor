@@ -25,7 +25,7 @@ export const Login: React.FC = () => {
       <input className='login-password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
       <button className='login-button' onClick={handleLogin}>Login</button>
       <div className='register-account'>
-        <a href="/" onClick={handleReset}>Forgot Password?</a>
+        <a href="/ResetPassword" onClick={handleReset}>Forgot Password?</a>
         <br />
         <br />
         <a>Don't have an account? </a>

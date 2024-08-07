@@ -3,8 +3,7 @@ import { auth } from './authConfig';
 
 // Reset password
 const reset = async (email: string) => {
-  await sendPasswordResetEmail(auth, email).then(() => {
-    
+  await sendPasswordResetEmail(auth, email).then(()=> {
   })
   .catch((error) => {
     const errorCode = error.code;
