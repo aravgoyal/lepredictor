@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { login, reset } from './authFeatures';
+import { login } from './authFeatures';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +15,7 @@ export const Login: React.FC = () => {
   };
 
   const handleReset = () => {
-    reset(email);
+    window.location.href = "/ResetPassword";
   }
 
   return (
@@ -25,7 +25,7 @@ export const Login: React.FC = () => {
       <input className='login-password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
       <button className='login-button' onClick={handleLogin}>Login</button>
       <div className='register-account'>
-        <a href="/ResetPassword" onClick={handleReset}>Forgot Password?</a>
+        <a href="/" onClick={handleReset}>Forgot Password?</a>
         <br />
         <br />
         <a>Don't have an account? </a>

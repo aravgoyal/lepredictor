@@ -14,6 +14,12 @@
 
 }
 
+ResetPassword {
+  font-weight: 500;
+  color: #b3b3b3;
+  text-decoration: none;
+}
+
 a {
   font-weight: 500;
   color: #b3b3b3;
