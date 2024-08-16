@@ -13,7 +13,7 @@ function ResetPassword() {
                 await sendPasswordResetEmail(auth, emailRef.current.value);
                 alert("Check your email for a password reset link.");
             } catch (err) {
-                alert((err as Error).message);
+                alert("This Email is not associated with a Momentum account.");
             }
         } else {
             alert("Please enter a valid email address.");
@@ -21,14 +21,20 @@ function ResetPassword() {
     };
 
     return (
-        <div className="ResetPassword">
+        <div className="Reset-Password">
             <h1>Forgot Password</h1>
             <form onSubmit={handleReset}>
-                <input name="email" ref={emailRef} placeholder="Enter your email" />
-                <button type="submit">Reset</button>
+                <input className = 'register-email' ref={emailRef} placeholder="Enter your email" />
+                <button className = 'Reset-button' type="submit">Reset</button>
             </form>
+            <div className="register-account">
+                <a>Return back to</a>
+                <a href="/"> Login</a>
+            </div>
         </div>
     );
 }
 
 export default ResetPassword;
+
+

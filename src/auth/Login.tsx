@@ -6,14 +6,14 @@ export const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     try {
-      login(email, password);
-    } catch (error) {
-      setMessage("Error logging in: " + error);
+      await login(email, password);
+    } catch (err) {
+      setMessage("Invalid credentials");
     }
   };
-
+  
   const handleReset = () => {
     window.location.href = "/ResetPassword";
   }

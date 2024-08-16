@@ -14,10 +14,25 @@
 
 }
 
-ResetPassword {
+.Reset-Password {
   font-weight: 500;
   color: #b3b3b3;
   text-decoration: none;
+  margin-top: 200px;
+}
+
+.Reset-Login{
+  margin: auto;
+  margin-top : 250px;
+  position: relative;
+}
+
+.Reset-button {
+  animation: none;
+  opacity: 1;
+  margin: auto;
+  margin-top: 70px;
+  position: relative;
 }
 
 a {
