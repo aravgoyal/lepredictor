@@ -17,7 +17,7 @@ export const Register: React.FC = () => {
 
     return (
         <div className="login-container">
-        <h1>Register</h1>
+        <h1>Make an Account</h1>
         <input className='register-email' type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
         <input className='register-password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
         <input className="register-confirm" type="password" value={confirm} onChange={(e) => setConfirm(e.target.value)} placeholder="Confirm Password" />

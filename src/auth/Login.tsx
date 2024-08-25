@@ -20,7 +20,7 @@ export const Login: React.FC = () => {
 
   return (
     <div className="login-container">
-      <h1>Momentum</h1>
+      <h1 className='glow'>Welcome</h1>
       <input className='login-email' type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
       <input className='login-password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
       <button className='login-button' onClick={handleLogin}>Login</button>

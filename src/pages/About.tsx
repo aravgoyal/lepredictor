@@ -1,7 +1,7 @@
 export function About() {
     return (
         <div className="scroll">
-            <div className="fade">
+            <div className="glow fade">
                 <h1>What is Momentum?</h1>
             </div>
             <div className="about-desc">

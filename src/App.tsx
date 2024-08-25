@@ -1,7 +1,7 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home"
-import { PredictNBA, PredictNFL, PredictEPL } from "./pages/Predict"
+import { PredictNBA, PredictNFL } from "./pages/Predict"
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import ResetPassword from './auth/ResetPassword';
@@ -16,7 +16,6 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/nba" element={<PredictNBA />} />
           <Route path="/nfl" element={<PredictNFL />} />
-          <Route path="/premierleague" element={<PredictEPL />} />
           <Route path="/home" element={<Home />} />
           <Route path="/register" element={<Register />}/>
           <Route path ="/ResetPassword" element={<ResetPassword />} />

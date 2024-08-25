@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #0e0e0e;
+  background-color: #030008;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -83,7 +83,7 @@ nav {
 
 li a {
   padding: 8px;
-  background-color: #0e0e0e;
+  background: none;
   float: left;
 }
 
@@ -185,10 +185,11 @@ li a {
   margin: 0;
   will-change: filter;
   transition: filter 500ms;
+  filter: drop-shadow(0 0 2em #ffffff);
 }
 
 .title:hover {
-  filter: drop-shadow(0 0 2em #ffffffaa);
+  filter: drop-shadow(0 0 0.5em #ffffff);
 }
 .title.react:hover {
   filter: drop-shadow(0 0 2em #ffffffaa);
@@ -198,12 +199,26 @@ li a {
   padding: 0;
   will-change: filter;
   transition: filter 500ms;
+  filter: drop-shadow(0 0 12em #ffffffaa);
 }
 .glow:hover {
-  filter: drop-shadow(0 0 2em #ffffffaa);
+  filter: drop-shadow(0 0 1em #ffffffaa);
 }
 .glow.react:hover {
+  filter: drop-shadow(0 0 1em #ffffffaa);
+}
+
+.more-glow {
+  padding: 0;
+  will-change: filter;
+  transition: filter 500ms;
   filter: drop-shadow(0 0 2em #ffffffaa);
+}
+.more-glow:hover {
+  filter: drop-shadow(0 0 1em #ffffffaa);
+}
+.more-glow.react:hover {
+  filter: drop-shadow(0 0 1em #ffffffaa);
 }
 
 .home-predict {
@@ -222,7 +237,7 @@ li a {
   transition: all linear 0.3s;
   border: 1px solid;
   border-color: #292929;
-  background-color: #0e0e0e;
+  background-color: #030008;
   border-radius: 8px;
   position: absolute;
   margin-left: auto;
@@ -248,7 +263,7 @@ li a {
   transition: all linear 0.3s;
   border: 1px solid;
   border-color: #292929;
-  background-color: #0e0e0e;
+  background-color: #030008;
   border-radius: 8px;
   position: absolute;
   margin-left: auto;
@@ -286,7 +301,7 @@ li a {
   transition: all linear 0.3s;
   border: 1px solid;
   border-color: #292929;
-  background-color: #0e0e0e;
+  background-color: #030008;
   border-radius: 8px;
   position: absolute;
   margin-left: auto;
@@ -303,7 +318,7 @@ li a {
   transition: all linear 0.3s;
   border: 1px solid;
   border-color: #292929;
-  background-color: #0e0e0e;
+  background-color: #030008;
   border-radius: 8px;
   position: absolute;
   margin-left: auto;
@@ -333,7 +348,7 @@ li a {
   transition: all linear 0.3s;
   border: 1px solid;
   border-color: #292929;
-  background-color: #0e0e0e;
+  background-color: #030008;
   border-radius: 8px;
   position: absolute;
   margin-left: auto;
@@ -351,7 +366,7 @@ li a {
   transition: all linear 0.3s;
   border: 1px solid;
   border-color: #292929;
-  background-color: #0e0e0e;
+  background-color: #030008;
   border-radius: 8px;
   position: absolute;
   margin-left: auto;
@@ -369,7 +384,7 @@ li a {
   transition: all linear 0.3s;
   border: 1px solid;
   border-color: #292929;
-  background-color: #0e0e0e;
+  background-color: #030008;
   border-radius: 8px;
   position: absolute;
   margin-left: auto;
@@ -453,7 +468,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #111111;
+  background-color: #030008;
   cursor: pointer;
   transition: all linear 0.3s;
 }

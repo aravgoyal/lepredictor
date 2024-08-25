@@ -1,4 +1,4 @@
-import { NBADropdownMenu, NFLDropdownMenu, EPLDropdownMenu } from "../Dropdown";
+import { NBADropdownMenu, NFLDropdownMenu } from "../Dropdown";
 import { NavBar } from "../NavBar";
 
 export function PredictNBA() {
@@ -26,21 +26,6 @@ export function PredictNFL() {
             <div className="fade-delay">
                 <h3 className="predict-instr">Choose your home and away teams.</h3>
                 <NFLDropdownMenu/>
-            </div>
-        </div>
-        );
-  }
-
-export function PredictEPL() {
-    return (
-        <div>
-            <NavBar />
-            <div className="fade">
-                <h1 className="glow">Make Your Prediction</h1>
-            </div>
-            <div className="fade-delay">
-                <h3 className="predict-instr">Choose your home and away teams.</h3>
-                <EPLDropdownMenu/>
             </div>
         </div>
         );
